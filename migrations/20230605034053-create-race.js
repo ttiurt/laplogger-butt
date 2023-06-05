@@ -9,24 +9,27 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      circuit: { 
+      circuit: {
         type: Sequelize.STRING(48),
         allowNull: false
       },
       winner: {
         type: Sequelize.STRING(48),
         allowNull: false
-      }, 
+      },
       cnstrc: {
         type: Sequelize.STRING(48),
         allowNull: false
       },
-      watchable: {
-        type: Sequelize.BOOLEAN,
-        allowNull: false
-      },
-      thoughts: {
-        type: Sequelize.STRING(120),
+      watchable: Sequelize.BOOLEAN,
+      creatorId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Profiles',
+          key: 'id',
+        },
       },
       createdAt: {
         allowNull: false,

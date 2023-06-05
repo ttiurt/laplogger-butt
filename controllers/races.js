@@ -2,6 +2,7 @@ const { Race } = require('../models')
 
 const create = async (req, res) => {
   try {
+    req.body.creatorId = req.user.profile.id
     const race = await Race.create(req.body)
     res.status(200).json(race)
   } catch (error) {

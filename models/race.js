@@ -4,35 +4,34 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Race extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+    
     static associate(models) {
-      // define association here
+      Race.belongsTo(models.Profile, { foreignKey: 'creatorId' })
     }
   }
   Race.init({
-    circuit: { 
+    circuit: {
       type: DataTypes.STRING(48),
       allowNull: false
     },
     winner: {
       type: DataTypes.STRING(48),
       allowNull: false
-    }, 
+    },
     cnstrc: {
       type: DataTypes.STRING(48),
       allowNull: false
     },
-    watchable: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false
+    watchable: DataTypes.BOOLEAN,
+    creatorId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      onDelete: 'CASCADE',
+      references: {
+        model: 'Profiles',
+        key: 'id',
+      },
     },
-    thoughts: {
-      type: DataTypes.STRING(120),
-    }
   }, {
     sequelize,
     modelName: 'Race',
