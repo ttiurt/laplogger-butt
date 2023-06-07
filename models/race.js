@@ -22,7 +22,20 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING(48),
       allowNull: false
     },
-    watchable: DataTypes.BOOLEAN,
+    watchable: {
+      type: DataTypes.STRING(5),
+      allowNull: false,
+      enum: ['Yes', 'No']
+    },
+    rating: {
+      type: DataTypes.INTEGER,
+      min: 1,
+      max: 10,
+    },
+    thoughts: {
+      type: DataTypes.STRING(120),
+      allowNull: false
+    },
     creatorId: {
       type: DataTypes.INTEGER,
       allowNull: false,

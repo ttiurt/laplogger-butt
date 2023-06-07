@@ -16,6 +16,7 @@ const index = async (req, res) => {
     const race = await Race.findAll()
     res.status(200).json(race)
   } catch (error) {
+    console.log(error)
     res.status(500).json(error)
   }
 }
