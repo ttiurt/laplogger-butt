@@ -20,9 +20,9 @@ app.use(express.json())
 app.use(formData.parse())
 
 // mount imported routes
-app.use('/api/profiles', profilesRouter)
-app.use('/api/auth', authRouter)
-app.use('/api/races', racesRouter)
+app.use('api/profiles', profilesRouter)
+app.use('api/auth', authRouter)
+app.use('api/races', racesRouter)
 
 // handle 404 errors
 app.use(function (req, res, next) {
